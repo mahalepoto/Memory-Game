@@ -12,7 +12,7 @@ const symbols = ['fa fa-diamond', 'fa fa-diamond', 'fa fa-paper-plane-o', 'fa fa
  */
  var displayCards = document.querySelector('.deck');
  for (i=0; i < symbols.length; i++) {
- 	var cards = document.createElement ('div');
+ 	var cards = document.createElement ('li');
  	cards.classList.add('card');
  	displayCards.appendChild(cards);
  }
