@@ -10,12 +10,14 @@ const symbols = ['fa fa-diamond', 'fa fa-diamond', 'fa fa-paper-plane-o', 'fa fa
  *   - loop through each card and create its HTML
  *   - add each card's HTML to the page
  */
- var displayCards = document.querySelector('.deck');
+ let displayCards = document.querySelector('.deck');
  for (i=0; i < symbols.length; i++) {
- 	var cards = document.createElement ('li');
+ 	let cards = document.createElement('li');
  	cards.classList.add('card');
  	displayCards.appendChild(cards);
  }
+ // Display card symbols dynamically 
+ 
 
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
