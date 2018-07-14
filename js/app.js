@@ -10,11 +10,47 @@ const symbols = ['fa fa-diamond', 'fa fa-diamond', 'fa fa-paper-plane-o', 'fa fa
  *   - loop through each card and create its HTML
  *   - add each card's HTML to the page
  */
+ let openedcards = [];
+ let matchedCards = [];
  let displayCards = document.querySelector('.deck');
  for (i=0; i < symbols.length; i++) {
  	let cards = document.createElement('li');
  	cards.classList.add('card');
+ 	cards.innerHTML = `<i class='${symbols[i]}'></i>`;
  	displayCards.appendChild(cards);
+ // creating click event listener 
+ 	cards.addEventListener('click', function () {
+ 		let currentCard = this;
+ 		let previouseCard = openedcards[0];
+ 		if (openedcards.length ===1) {
+ 			
+ 			
+ 			if (currentCard.innerHTML === previouseCard.innerHTML) {
+ 				currentCard.classList.add('match');
+ 				previouseCard.classList.add('match');
+ 				matchedCards.push(currentCard,previouseCard);
+ 				openedcards = [];
+ 				gameOver();
+ 			
+ 			} else {
+ 				setTimeout (function(){
+ 					currentCard.classList.remove('open', 'show');	
+ 					previouseCard.classList.remove ('open', 'show');
+ 				}, 500);
+ 				
+ 				
+ 				openedcards = [];
+
+ 			}
+
+
+ 		} else {
+
+
+ 		}
+ 		cards.classList.add('open', 'show');
+ 		openedcards.push(this);
+ 	});
  }
  // Display card symbols dynamically 
  
@@ -32,6 +68,12 @@ function shuffle(array) {
     }
 
     return array;
+}
+function gameOver() {
+	if (matchedCards.length === symbols.length) {
+		alert ('Game Over');
+	}
+
 }
 
 
